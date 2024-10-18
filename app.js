@@ -74,13 +74,15 @@
 //     { title: "Book C", author: "Author B" },
 //     { title: "Book D", author: "Author C" },
 // ];
-// const result = books
-//     .filter(
-//         (book, index, self) =>
-//         index === self.findIndex((b) => b.author === book.author)
-//     )
-//     .sort((a, b) => a - b);
-
+// const result = books.reduce((acc, curVal) => {
+//     const item = acc.find((book) => curVal.author == book.author);
+//     if (item) {
+//         item.books.push(curVal.title);
+//     } else {
+//         acc.push({ author: curVal.author, books: [curVal.title] });
+//     }
+//     return acc;
+// }, []);
 // console.log(result);
 
 // 6 misol
@@ -101,7 +103,7 @@
 
 // const result =
 //     products.reduce((acc, curVal) => acc + curVal.price, 0) / products.length;
-// console.log(result);
+// console.log(Math.round(result));
 
 // 8 misol
 // const books = [
@@ -120,7 +122,6 @@
 //     { name: "Shoes", price: 100, sold: false },
 // ];
 // products.map(allSold);
-
 // function allSold(product) {
 //     product.sold = true;
 // }
@@ -147,11 +148,19 @@
 //     { name: "Laptop", quantity: 1 },
 //     { name: "Shoes", quantity: 4 },
 // ];
-// let counter = [];
-// for (let product of products) {
-//     if (counter.includes(product.name)) {}
-// }
-// console.log(counter);
+
+// const result = products.reduce((acc, curVal) => {
+//     const item = acc.find((prod) => curVal.name == prod.name);
+//     if (item) {
+//         item.quantity = item.quantity + curval.quantity;
+//     } else {
+//         acc.push {
+//             "name "
+//             curVal.name, "quantity ": item.quantity
+//         }
+//     }
+//     return acc
+// });
 
 // 12 misol
 // const products = [
@@ -159,7 +168,3 @@
 //     { name: "Phone", category: "Electronics" },
 //     { name: "Shoes", category: "Fashion" },
 // ];
-// const byName = products.map((a) => a.name);
-// const byCategory = products.map((b) => b.category);
-// console.log("Name", byName);
-// console.log("Category:", byCategory);
